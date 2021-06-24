@@ -1,6 +1,4 @@
 const {Sequelize, DataTypes} = require("sequelize");
-const Model = Sequelize.Model;
-class work extends Model {}
 const sequelize_mysql = require("../Connection/sequelize_mysql")
 
 const works = sequelize_mysql.define("works", {
@@ -23,3 +21,5 @@ const works = sequelize_mysql.define("works", {
 })
 
 module.exports = works
+
+require("../relation_model/work")
