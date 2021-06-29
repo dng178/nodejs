@@ -36,3 +36,4 @@ const user_dept = sequelize_mysql.define("user_dept", {
     updatedAt: "updated_at",
 })
 module.exports = user_dept;
+require("../relation_model/UserDept");
