@@ -2,7 +2,7 @@ const {Sequelize, DataTypes} = require("sequelize");
 const sequelize_mysql = require("../Connection/sequelize_mysql")
 
 
-const users = sequelize_mysql.define("users", {
+const User = sequelize_mysql.define("user", {
     firstName: {
         type: DataTypes.STRING,
     },
@@ -13,11 +13,15 @@ const users = sequelize_mysql.define("users", {
         type: DataTypes.INTEGER,
         allowNull:false,
     },
+    salId:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    }
 }, {
-    modelName: "users",
+    tableName: "user",
     createdAt: "created_at",
     updatedAt: "updated_at"
 })
-
-module.exports = users;
+// users.sync({alter: true})
+module.exports = User;
 require("../relation_model/user")

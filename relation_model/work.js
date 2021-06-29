@@ -1,8 +1,14 @@
 const Works = require("../Models/work")
-const Users = require("../Models/user")
+const User = require("../Models/user")
+const Sal = require("../Models/salaries")
 
-// console.log(users);
-Works.hasMany(Users, {
+Works.hasMany(User, {
     foreignKey: "workId",
-    // as: "users"
+
+})
+
+Works.belongsToMany(Sal,{
+    through: "user",
+    foreignKey: "workId",
+    otherKey: "salId"
 })
