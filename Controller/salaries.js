@@ -66,7 +66,6 @@ class SalController {
                     }
                 }
             );
-            await res.send("Delete successful")
             return res.json({
                 data: sal
             })
