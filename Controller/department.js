@@ -68,7 +68,6 @@ class deptController {
                     }
                 }
             );
-            await res.send("Delete successful")
             return res.json({
                 data: dept
             })

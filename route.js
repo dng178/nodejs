@@ -3,8 +3,6 @@ const Workcontroller = require("./Controller/work")
 const DeptController = require("./Controller/department")
 const SalController = require("./Controller/salaries")
 const EventController = require("./Controller/event")
-const bodyParser = require('body-parser');
-
 
 let userController = new UserController()
 let workController = new Workcontroller()
@@ -12,20 +10,17 @@ let deptController = new DeptController()
 let salController = new SalController()
 let evController = new EventController()
 
-function setRoute(app) {
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: false }));
+let urlMiddleware = require("./Middleware/url")
 
-    app.use(function (req, res, next) {
-        console.log('url: ', req.url)
-        console.log("method: " + req.method);
-        next();
-    })
+function setRoute(app) {
+
+    app.use("*", urlMiddleware.logUrl)
+
     //User
     app.get("/user", function (req, res) {
         userController.get(req, res)
     })
-    app.get("/userSal", function (req, res){
+    app.get("/user/sal", function (req, res){
         userController.getS(req, res)
     })
     app.post("/user/create", function (req, res) {
